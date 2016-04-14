@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Welcomee</div>
 				
-                    Your Application's Land Page.
+                    Your Application's Landing Page.
 
                     <p>Explore</p>
                     <li><a href="{{url('/assignments')}}">Assignments</li>
