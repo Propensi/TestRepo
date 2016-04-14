@@ -1,0 +1,5 @@
+php artisan crud:generate Staff --fields="emp_id:string:required:unique, role:string:required, emp_name:string:required, emp_email:string:required, mgr_id:string, dept_name:string" --route=yes --view-path="admin" --namespace=Admin --route-group=admin
+php artisan crud:generate Department --fields="dept_id:string:required, dept_name:string:required" --route=yes --view-path="admin" --namespace=Admin --route-group=admin
+
+
+php artisan crud:generate Setaf --fields="emp_id:string:required:unique, role:string:required, emp_name:string:required, emp_email:string:required, mgr_id:string, dept_name:string" --route=yes --view-path="admin" --namespace=Admin --route-group=admin

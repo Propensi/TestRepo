@@ -1,0 +1,12 @@
+.pageheader {
+    padding-left: 20px;
+    padding-right:1px;
+    padding-top: 1px;
+    padding-bottom:10px;
+    border-bottom: 1px solid #eee;
+    background: #f7f7f7;
+    position: relative;
+}
+
+<div class="pageheader">
+<h3>Departments </h3></div>
