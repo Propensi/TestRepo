@@ -327,7 +327,6 @@
 
             <!-- disini end foreach -->
             {!! Form::open(['url' => 'comments', 'class' => 'form-horizontal']) !!}
-            <form role="form" action="">
                 <div class="form-group">
                      {!! Form::text('Comments', null, ['class' => 'form-control']) !!}
                     
