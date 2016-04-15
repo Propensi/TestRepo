@@ -139,7 +139,9 @@
                         <div class="col-md-3">
                             <h4>Progress</h4> <!-- masih belom tau mau gmn -->
                             <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                
+                              <?php echo '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ $assignment->Milestone }}" aria-valuemin="0" aria-valuemax="100" style="width:',$assignment->Milestone,'%">' ?>                  
+                                
                                     <span class="sr-only">80% Complete (warning)</span>
                                 </div>
                             </div>
