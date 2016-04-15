@@ -22,4 +22,10 @@ class Comment extends Model
      */
     protected $fillable = ['Comment', 'Assn_ID', 'Step_ID', 'Sender', 'Receiver'];
 
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User','Sender', 'User_ID');
+    }
 }

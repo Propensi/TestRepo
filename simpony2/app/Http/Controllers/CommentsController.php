@@ -9,6 +9,7 @@ use App\Comment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
 class CommentsController extends Controller
 {
@@ -36,7 +37,11 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view('comments.create');
+
+        $comments = Comment::paginate(15);
+        return view('comments.create', compact('comments'));
+
+        
     }
 
     /**
@@ -50,8 +55,10 @@ class CommentsController extends Controller
         Comment::create($request->all());
 
         Session::flash('flash_message', 'Comment added!');
+       
+        $id = $request->Assn_ID;
 
-        return redirect('comments');
+        return Redirect::route('assignments.show', $id);
     }
 
     /**

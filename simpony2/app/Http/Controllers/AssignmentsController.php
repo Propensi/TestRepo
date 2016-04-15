@@ -104,9 +104,18 @@ class AssignmentsController extends Controller
         $assignment = Assignment::find($id);
         $head = User::find($assignment->HG_ID);
         $staff = User::find($assignment->Staff_Prog_ID_Do);
-        $comments = Comment::where('Assn_ID', '=', 15 )->paginate(10);
+        $pengirim = User::find($assignment->Emp_ID_Req_Vald);
+        $hod = User::find($assignment->HOD_ID);
+        //$comments = Comment::all();
+        //$commentsu = Comment::with('users')->get();
 
-        return view('assignments.show', compact('assignment', 'head', 'staff', 'steps','comments'));
+        $comments = \DB::table('comments')
+        ->join('users', function ($join) {
+            $join->on('comments.Sender', '=', 'users.User_ID');
+        })
+        ->get();
+
+        return view('assignments.show', compact('assignment', 'head', 'staff', 'steps','comments','hod','pengirim'));
     }
 
     /**

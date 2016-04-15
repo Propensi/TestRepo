@@ -70,15 +70,14 @@
 
                             {!! Form::select('Milestone', (['' => 'Update Milestone'] + $steps), null, ['class' => 'form-control' , 'required'=> 'required']) !!}
 
-
                     </td>
                     
                     <td>
-                        {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
+                        {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}  {!! Form::close() !!}
 
                     </td>
                     <td>
-                        {!! Form::submit('Remind', ['class' => 'btn btn-primary form-control']) !!}
+                        {!! Form::submit('Remind', ['class' => 'btn btn-primary form-control']) !!}  {!! Form::close() !!}
                         
                     </td>
                 </tr>
@@ -152,14 +151,35 @@
             <div class="row">
                         <div class="col-md-8">
                             <h4> Penanggung Jawab </h4>
-                            <p>Head Of Dept : Toni Prabowo<p>
-                                <p>Head Group : Adhika Pradipta<p>
-                                    <p>Staff : Kane Widyasputry<p>
+                            <p>Head Of Dept : 
+                              <?php if ($hod == NULL) {
+                                        } else {
+                                           echo    $hod->name ;
+                                        }
+                                      ?>
+
+                            </p>
+                                <p>Head Group :
+                                  <?php if ($head == NULL) {
+                                        } else {
+                                           echo    $head->name ;
+                                        }
+                                      ?>
+
+                                  </p>
+                                    <p>Staff :         
+                                      <?php if ($staff == NULL) {
+                                        } else {
+                                           echo    $staff->name ;
+                                        }
+                                      ?>
+
+                                      </p>
                         </div>
 
                         <div class="col-md-4">
                             <h4> Files </h4>
-                            <a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
+                            <a href=""><i class="fa fa-picture-o"></i> {{$assignment->Assn_File}}</a>
                         </div>
                     </div>
                                     
@@ -199,7 +219,7 @@
                     <h5>
                     Pengirim
                     </h5>
-                    <p>Adhika Pradipta<p>
+                    <p>{{$pengirim->name}}<p>
                     
                     <br>
 
@@ -252,65 +272,15 @@
                 <!-- <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
  -->
                 <div class="comment-text">
-                      <span class="username">
-                        <strong>Tes</strong>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                   <p>
-                </div>
-                <!-- /.comment-text -->
-              </div>
-              <hr>
-            <br>
-            <div class="box-comment">
-                <!-- User image -->
-                <!-- <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
- -->
-                <div class="comment-text">
-                      <span class="username">
-                        <strong>Tes</strong>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                   <p>
-                </div>
-                <!-- /.comment-text -->
-              </div>
-              <hr>
-            <br>
+                 
 
-
-            <div class="box-comment">
-                <!-- User image -->
-                <!-- <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
- -->
-                <div class="comment-text">
-                      <span class="username">
-                        <strong>Tes</strong>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                   <p>
-                </div>
-                <!-- /.comment-text -->
-              </div>
-              <hr>
-            <br>
-
-            @foreach($comments as $item)
+@foreach($comments as $item)
 
                 <div class="box-comment">
                 
                 <div class="comment-text">
                       <span class="username">
-                        <strong>{{ $item->Sender }}</strong>
+                        <strong>{{ $item->name }}</strong>
                         <span class="text-muted pull-right">{{ $item->created_at }} </span>
                       </span>
                 <p>
@@ -327,23 +297,28 @@
 
             <!-- disini end foreach -->
             {!! Form::open(['url' => 'comments', 'class' => 'form-horizontal']) !!}
-                <div class="form-group">
+                <div class="form-group col-sm-12">
 
                   {!! Form::label('Comment', '', ['class' => 'form-control']) !!}
                      {!! Form::textarea('Comment', null, ['class' => 'form-control']) !!}
                     
                     <!-- <input id="Comments" placeholder="Tinggalkan pesan" type="text" class="form-control" id="comment" /> -->
-                </div>
+               
 
                {!! Form::hidden('Assn_ID', $assignment->Assn_ID) !!}
-
+               {!! Form::hidden('Sender', Auth::user()->user_ID ) !!}
+            <br>
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
-       
+
+
+        </div> 
         {!! Form::close() !!}
         </div>
     </div>
 </div>
 </div>
+
+<!-- div tutup body-->
 </div>
 
 
