@@ -394,6 +394,13 @@
 </div>
 
 
+@foreach($comments as $item)
+                {{-- */$x++;/* --}}
+
+
+
+@endforeach
+
 
 
 
