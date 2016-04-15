@@ -304,6 +304,8 @@
               <hr>
             <br>
 
+            <!-- disini end foreach -->
+
             <form role="form">
                 <div class="form-group">
                      
@@ -322,7 +324,7 @@
 </div>
 </div>
 
-<?php $comments = [];?>
+
 @foreach($comments as $item)
                 {{-- */$x++;/* --}}
 

@@ -40,6 +40,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('assignments/{Assn_ID}/assign', 'AssignmentsController@assign');
 	Route::get('assignments/pelacakan', 'AssignmentsController@pelacakan');
 	Route::resource('assignments', 'AssignmentsController');
+	Route::resource('comments', 'CommentsController');
 });
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('steps', 'StepsController');

@@ -15,6 +15,9 @@ use App\User;
 use App\Step;
 use Illuminate\Support\Facades\Auth;
 
+use App\Comment;
+
+
 class AssignmentsController extends Controller
 {
 
