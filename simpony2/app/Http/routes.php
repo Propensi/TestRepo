@@ -41,6 +41,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('assignments/pelacakan', 'AssignmentsController@pelacakan');
 	Route::resource('assignments', 'AssignmentsController');
 	Route::resource('comments', 'CommentsController');
+	Route::post('comments/create','CommentsController@create');
 });
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('steps', 'StepsController');

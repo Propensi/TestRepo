@@ -31,7 +31,7 @@ class AssignmentsController extends Controller
         //$assignments = Assignment::paginate(15);
 
         $assignments0 = Assignment::where('Assn_Status', '=', 0)->paginate(15);
-        $assignments1 = Assignment::where('Assn_Status', '=', 1 )->whereNull('HG_ID')->paginate(15);
+        $assignments1 = Assignment::where('Assn_Status', '=', 1)->whereNull('HG_ID')->paginate(15);
         return view('assignments.index', compact('assignments0','assignments1')); //array di index
         
     }
@@ -104,7 +104,7 @@ class AssignmentsController extends Controller
         $assignment = Assignment::find($id);
         $head = User::find($assignment->HG_ID);
         $staff = User::find($assignment->Staff_Prog_ID_Do);
-        $comments = Comment::paginate(1)->where('Assn_ID','=',$id);
+        $comments = Comment::where('Assn_ID', '=', 15 )->paginate(10);
 
         return view('assignments.show', compact('assignment', 'head', 'staff', 'steps','comments'));
     }

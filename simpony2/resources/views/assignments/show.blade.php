@@ -328,7 +328,9 @@
             <!-- disini end foreach -->
             {!! Form::open(['url' => 'comments', 'class' => 'form-horizontal']) !!}
                 <div class="form-group">
-                     {!! Form::text('Comments', null, ['class' => 'form-control']) !!}
+
+                  {!! Form::label('Comment', '', ['class' => 'form-control']) !!}
+                     {!! Form::textarea('Comment', null, ['class' => 'form-control']) !!}
                     
                     <!-- <input id="Comments" placeholder="Tinggalkan pesan" type="text" class="form-control" id="comment" /> -->
                 </div>
