@@ -104,7 +104,7 @@ class AssignmentsController extends Controller
         $assignment = Assignment::find($id);
         $head = User::find($assignment->HG_ID);
         $staff = User::find($assignment->Staff_Prog_ID_Do);
-        $comments = [];
+        $comments = Comment::paginate(1);
 
         return view('assignments.show', compact('assignment', 'head', 'staff', 'steps','comments'));
     }

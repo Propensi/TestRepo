@@ -304,6 +304,27 @@
               <hr>
             <br>
 
+            @foreach($comments as $item)
+
+                <div class="box-comment">
+                
+                <div class="comment-text">
+                      <span class="username">
+                        <strong>{{ $item->Sender }}</strong>
+                        <span class="text-muted pull-right">{{ $item->created_at }} </span>
+                      </span>
+                <p>
+                      {{$item->Comment}}
+                   <p>
+                </div>
+                
+              </div>
+              <hr>
+            <br>
+
+@endforeach
+
+
             <!-- disini end foreach -->
 
             <form role="form">
@@ -323,28 +344,6 @@
 </div>
 </div>
 </div>
-
-
-@foreach($comments as $item)
-                {{-- */$x++;/* --}}
-
-                <div class="box-comment">
-                
-                <div class="comment-text">
-                      <span class="username">
-                        <strong>{{ $item->Sender }}</strong>
-                        <span class="text-muted pull-right">{{ $item->created_at }} </span>
-                      </span>
-                <p>
-                      {{$item->Comment}}
-                   <p>
-                </div>
-                
-              </div>
-              <hr>
-            <br>
-
-@endforeach
 
 
 
