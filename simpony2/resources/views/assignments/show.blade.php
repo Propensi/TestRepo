@@ -397,7 +397,21 @@
 @foreach($comments as $item)
                 {{-- */$x++;/* --}}
 
-
+                <div class="box-comment">
+                
+                <div class="comment-text">
+                      <span class="username">
+                        <strong>{{ $item->Sender }}</strong>
+                        <span class="text-muted pull-right">{{ $item->created_at }} </span>
+                      </span><!-- /.username -->
+                <p>
+                      {{$item->Comment}}
+                   <p>
+                </div>
+                <!-- /.comment-text -->
+              </div>
+              <hr>
+            <br>
 
 @endforeach
 
