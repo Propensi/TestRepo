@@ -326,19 +326,19 @@
 
 
             <!-- disini end foreach -->
-
-            <form role="form">
+            {!! Form::open(['url' => 'comments', 'class' => 'form-horizontal']) !!}
+            <form role="form" action="">
                 <div class="form-group">
-                     
+                     {!! Form::text('Comments', null, ['class' => 'form-control']) !!}
                     
-                    <input placeholder="Tinggalkan pesan" type="text" class="form-control" id="comment" />
+                    <!-- <input id="Comments" placeholder="Tinggalkan pesan" type="text" class="form-control" id="comment" /> -->
                 </div>
-               
-                
-                <button type="submit" class="btn btn-default pull-right">
-                    Submit
-                </button>
-            </form>
+
+               {!! Form::hidden('Assn_ID', $assignment->Assn_ID) !!}
+
+            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+       
+        {!! Form::close() !!}
         </div>
     </div>
 </div>
