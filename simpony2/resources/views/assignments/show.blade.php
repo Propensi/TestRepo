@@ -236,9 +236,6 @@
                                     
                     <!-- disini buat reminder {{ Auth::User()->role }} == Head Group atau Head of Dept.-->
 
-                    <?php if (1 == 2) 
-                        {
-                            echo '
             <div class="row">
                         <div class="col-md-4">
                             <a href="#" class="btn btn-sm btn-warning">Remind</a>
@@ -248,7 +245,6 @@
                         <div class="col-md-4">
                         </div>
             </div>
-            ';} ?>
 
                 <!-- disini buat reminder -->
 
@@ -278,21 +274,14 @@
                     
                     <br>
 
-                    <!-- Action:HOD/HG-->
-                    <?php if (1 == 2) 
-                        {
-                            echo 
-                            ' 
+                     
+                           
                             <h5>Action</h5>
                                 <div class="text-left mtop20">                        
                                     <a href="#" class="btn btn-sm btn-success">Approve</a>
                                     <a href="#" class="btn btn-sm btn-danger">Reject</a>
                                 </div>
                                 <br>
-                            ';
-                        }
-                    ?>
-                   
                 </div>
             </div>
         </div>
@@ -300,10 +289,7 @@
 </div>
 
 <!-- klo hg/hod baru dimunculin guys ubah ifnya aja-->
-<?php if(1==2) {
 
-    echo
-    '
     <div class="row">
         <div class="col-md-8">
             <div class="box">
@@ -405,8 +391,6 @@
     </div>
 </div>
 </div>
-';} ?>
-
 </div>
 
 
