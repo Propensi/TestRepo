@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+<!-- jgjffh -->
     <h1>Assign Assignment</h1>
     <hr>
 
@@ -47,7 +47,7 @@
 
     {!! Form::model($assignment, [
         'method' => 'PATCH',
-        'url' => ['assignments', $assignment->Assn_ID],
+        'url' => ['assignments/update2', $assignment->Assn_ID],
         'class' => 'form-horizontal'
     ]) !!}
 
