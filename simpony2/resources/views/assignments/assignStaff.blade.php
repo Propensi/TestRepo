@@ -114,6 +114,14 @@
                 </div>
             </div>
 
+                <div class="form-group {{ $errors->has('Step') ? 'has-error' : ''}}">
+                {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('bobot', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('Step', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
@@ -151,7 +159,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <!--<td>{{ $x }}</td>-->
-                    <td><a href="{{ url('steps', $item->ID_Step) }}">{{ $item->ID_Step }}</a></td><td>{{ $item->Title }}</td><td>{{ $item->Step }}</td>
+                    <td>{{ $x }}</td><td><a href="{{ url('steps', $item->ID_Step) }}">{{ $item->Title }}</a></td><td>{{ $item->Step }}</td>
                     <td>
                         <a href="{{ url('steps/' . $item->ID_Step . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
@@ -170,7 +178,7 @@
         </table>
 
 
-       
+       <button type="button" class="btn btn-default" data-dismiss="modal"><a href="http://localhost/TestRepo3/simpony2/public/assignments/hgstaff">back</a></button>
 
        
     </div>

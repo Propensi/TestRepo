@@ -5,7 +5,7 @@
 <div class="table">
             <table class="table table-bordered table-striped table-hover">
                 <thead>
-                    <h4> Request Diterima </h4>
+                    <h4> Assign Assignment </h4>
                     <tr>
                          <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Deadline</th>
                      </tr>
@@ -23,6 +23,14 @@
                     </td>
                 </tr>
                 @endforeach
+
+                <?php 
+                    if($x == '0'){
+                        echo 
+                        '<td>Tidak ada request masuk (assign).</td><td></td><td></td><td></td><td></td>
+                        ';
+                    }
+                    ?>
                 <tbody>
             </table>
     <div class="pagination"> {!! $assignments1->render() !!} </div>

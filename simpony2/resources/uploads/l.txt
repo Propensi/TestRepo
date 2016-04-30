@@ -1,0 +1,16 @@
+Layanan Pengelolaan User Authentication
+Layanan Dukungan Teknis
+Layanan Menerima Panggilan
+Layanan Mengirim Panggilan
+Layanan Pengadaan Hardware
+Layanan Pemeliharaan Hardware
+Layanan Perbaikan Hardware
+Layanan Melihat Penggunaan Meteran Customer
+Layanan Melihat Detil Data Pengguna
+Layanan Pengecekan Kerusakan Meteran
+Layanan MRS (Pengaduan Masalah)
+Layanan Cek Pipa
+Layanan Analisa Status Koneksi Jaringan AMR
+Layanan Pemetaan Lokasi
+
+Tambahin Server

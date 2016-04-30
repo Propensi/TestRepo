@@ -3,88 +3,7 @@
 @section('content')
 
     <h1>Assignment</h1>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Judul</th>
-                    <th>Deskripsi</th>
-                    <th>File</th>
-                    <th>Staff</th>
-                    <th>Departemen</th>
-                    <th>Sender</th>
-                    <th>Created at</th>
-                    <th>Deadline</th>
-                    <th>Milestone</th>
-                    <th>Status</th>
-                    <th>Head Group</th>
-                    <th>Action</th>            
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> {{ $assignment->Assn_ID }}</td> 
-                    <td> {{ $assignment->Assn_Nama }} </td>
-                    <td> {{ $assignment->Assn_Deskripsi}} </td>
-                    <td> {{ $assignment->Assn_File }}</td>
-                    <td> 
-                        <?php if ($staff == NULL) {
-
-                        } else {
-                           echo    $staff->name ;
-                        }
-                      ?>
-                    </td>
-                    <td> {{ $assignment->Dept_ID }}</td>
-                    <td> {{ $assignment->Emp_ID_Req_Vald }}</td>
-                    <td> {{ $assignment->created_at }}</td>
-                    <td> {{ $assignment->Tgl_Deadline }} </td>
-                    <td> {{ $assignment->Milestone }}</td>
-
-                    <td>
-                    <?php  
-                        if (($assignment -> Assn_Status) == '1'){
-                            echo 'Approved';
-                        }
-                    ?>
-                    </td>
-                    <td> 
-
-                        <?php if ($head == NULL) {
-
-                        } else {
-                             echo  $head->name ;
-                        }
-                      ?>
-                       
-
-                    </td>
-
-                    <td>
-                        {!! Form::model($assignment, [
-                                'method' => 'PATCH',
-                                'url' => ['assignments', $assignment->Assn_ID],
-                                'class' => 'form-horizontal'
-                            ]) !!}
-
-                            {!! Form::select('Milestone', (['' => 'Update Milestone'] + $steps), null, ['class' => 'form-control' , 'required'=> 'required']) !!}
-
-                    </td>
-                    
-                    <td>
-                        {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}  {!! Form::close() !!}
-
-                    </td>
-                    <td>
-                        {!! Form::submit('Remind', ['class' => 'btn btn-primary form-control']) !!}  {!! Form::close() !!}
-                        
-                    </td>
-                </tr>
-            </tbody>    
-        </table>
-    </div>
-        
+   
 
 <head>
  <style>
@@ -99,6 +18,13 @@
     overflow-x:hidden; 
 
   }
+
+<script>
+$(document).ready(function() {
+  $('.test-popup-link').magnificPopup({type:'image'});
+
+});
+</script>
 
 </style>
 </head>
@@ -160,6 +86,8 @@
                                         }
                                       ?>
 
+                                      
+
                             </p>
                                 <p>Head Group :
                                   <?php if ($head == NULL) {
@@ -181,7 +109,11 @@
 
                         <div class="col-md-4">
                             <h4> Files </h4>
-                            <a href=""><i class="fa fa-picture-o"></i> {{$assignment->Assn_File}}</a>
+                            
+                             <?php
+                                 echo '<a href="http://localhost/TestRepo3/simpony2/resources/uploads/'.$assignment->Assn_File.'" download>'.$assignment->Assn_File.'</a>';
+                               ?>
+
                         </div>
                     </div>
                                     
@@ -189,7 +121,7 @@
 
             <div class="row">
                         <div class="col-md-4">
-                            <a href="#" class="btn btn-sm btn-warning">Remind</a>
+                            
                         </div>
                         <div class="col-md-4">
                         </div>
@@ -226,15 +158,34 @@
                     <br>
 
                      
-                           
+                           <hr>
                             <h5>Action</h5>
                                 <div class="text-left mtop20">                        
                                     <a href="#" class="btn btn-sm btn-success">Approve</a>
                                     <a href="#" class="btn btn-sm btn-danger">Reject</a>
+                                    /
+                                    <a href="#" class="btn btn-sm btn-warning">Remind</a>
                                 </div>
                                 <br>
+
+
+                                 {!! Form::model($assignment, [
+                                'method' => 'PATCH',
+                                'url' => ['assignments', $assignment->Assn_ID],
+                                'class' => 'form-horizontal'
+                            ]) !!}
+
+                            {!! Form::select('Milestone', (['' => 'Update Milestone'] + $steps), null, ['class' => 'form-control' , 'required'=> 'required']) !!}
+                       <br>
+                       <div class="col-md-6 pull-right">
+                        {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}  
+                        {!! Form::close() !!}
+                                        
+                        </div>
+
                 </div>
             </div>
+            <br/>
         </div>
     </div>
 </div>
@@ -249,11 +200,32 @@
                 Task
             </h5>
             <hr>
+            <br/>
             <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
                         
+                        @foreach($files as $item)
+
+                        <?php
+                        echo '<a class="test-popup-link" href="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'"><img src="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
+                        ?>
+
+                        @endforeach
+
+                        <hr>
+                        <br/>
+
+
+                        {!! Form::open(['url' => 'files/create', 'class' => 'form-horizontal', 'files' => true]) !!}
+<div class="col-md-8">
+                       {!! Form::file('file') !!}</div>
+<div class="col-md-4">
+
+                        {!! Form::hidden('Assn_ID', $assignment->Assn_ID) !!}
+                        {!! Form::hidden('ID_Step', $assignment->Milestone) !!}
+
+                                   {!! Form::submit('Upload', ['class' => 'btn btn-primary form-control']) !!}
+                       </div>
+                        {!! Form::close() !!}
                       </div>
 
         </div>
@@ -302,7 +274,8 @@
                 <div class="form-group col-sm-12">
 
                   {!! Form::label('Comment', '', ['class' => 'form-control']) !!}
-                     {!! Form::textarea('Comment', null, ['class' => 'form-control']) !!}
+
+                     {!! Form::textarea('Comment', null, ['class' => 'form-control', 'required'=> 'required']) !!}
                     
                     <!-- <input id="Comments" placeholder="Tinggalkan pesan" type="text" class="form-control" id="comment" /> -->
                
@@ -322,6 +295,7 @@
 
 <!-- div tutup body-->
 </div>
+
 
 
 

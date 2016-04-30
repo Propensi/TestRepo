@@ -17,13 +17,23 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->guest()) {
+        if (Auth::guard($guard)->guest()) { // atyau role 
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
                 return redirect()->guest('login');
             }
         }
+
+        if (Auth::guard($guard)->user()->role == "GM" || Auth::guard($guard)->user()->role == "Head of Dept" || Auth::guard($guard)->user()->
+            role == "Head Group" ||Auth::guard($guard)->user()->role == "Staff" || Auth::guard($guard)->user()->role == "User") {  
+            if ($request->ajax() || $request->wantsJson()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('/');
+            }
+        }
+
         // return redirect('/');
         return $next($request);
     }

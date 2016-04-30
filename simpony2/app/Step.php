@@ -20,7 +20,7 @@ class Step extends Model
      *
      * @var array
      */
-    protected $fillable = ['ID_Step', 'Assn_ID', 'Title', 'Step'];
+    protected $fillable = ['ID_Step', 'Assn_ID', 'Title', 'Step', 'bobot'];
     public $timestamps = false;
 
 }

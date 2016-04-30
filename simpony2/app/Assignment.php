@@ -20,9 +20,10 @@ class Assignment extends Model
      *
      * @var array
      */
-    protected $fillable = ['Assn_ID', 'Staff_Prog_ID_Do', 'Emp_ID_Req_Vald', 'Assn_Nama', 'Assn_Deskripsi', 'Assn_File', 'Assn_Status', 'Tgl_Request', 'Tgl_Deadline', 'HG_ID', 'HOD_ID' ,'Milestone', 'Dept_ID'];
+    protected $fillable = ['Assn_ID', 'Staff_Prog_ID_Do', 'Emp_ID_Req_Vald', 'Assn_Nama', 'Assn_Deskripsi', 'Assn_File', 'Assn_Status', 'Tgl_Request', 'Tgl_Deadline', 'HG_ID', 'HOD_ID' ,'Milestone', 'Dept_ID','Hg_Val','Hod_Val'];
 
         public function allAssignment() {
         return $this->belongsToMany('App\Assignment');
+        
     }
 }

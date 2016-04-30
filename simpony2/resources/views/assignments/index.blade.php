@@ -16,15 +16,19 @@
             </thead>
             <tbody>
             {{-- */$x=0;/* --}}
+
+            <!-- klo ada dollar itu artinya dia minta variiable ke asssignmentcontroller -->
             @foreach($assignments0 as $item)
                 {{-- */$x++;/* --}}
 
                     <?php 
-
+                        $texts='';
                         if(strlen($item->Assn_Deskripsi) > 20) {
                             
                           $texts = substr($item->Assn_Deskripsi, 0, 20).'...';
                           
+                        } else {
+                            $texts = $item->Assn_Deskripsi;
                         }
 
                         $date = substr($item->created_at, 0,10);
@@ -84,6 +88,7 @@
                 </thead>
                 <tbody>
             {{-- */$x=0;/* --}}
+             
             @foreach($assignments1 as $item)
                 {{-- */$x++;/* --}}
                 <tr>

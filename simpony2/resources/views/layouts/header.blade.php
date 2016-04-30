@@ -1,6 +1,6 @@
 <!-- Main Header -->
 <header class="main-header">
-     <a href="index2.html" class="logo">
+     <a href="http://localhost/TestRepo3/simpony2/public" class="logo">
     <span class="logo-mini"><b>S</b>IM</span>
     <!-- Logo -->
     <span class="logo-lg"><b>Simponi</b>Lite</span>
@@ -25,17 +25,25 @@
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
+                        <span class="label label-warning">!</span>
                     </a>
+
+                    <?php $notifikasis = DB::table('notifikasis')->where('Receiver','=',Auth::user()->user_ID)->get(); 
+                        $users = DB::table('users')->get();
+                        $assignments = DB::table('assignments')->get();
+
+                    ?>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
+                        <li class="header">Notifications</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
                                 <li><!-- start notification -->
+                                    @foreach($notifikasis as $items)
                                     <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        <i class="fa fa-users text-aqua"> {{ $items->Title }}</i>
                                     </a>
+                                    @endforeach
                                 </li><!-- end notification -->
                             </ul>
                         </li>
@@ -49,16 +57,17 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ asset("/bower_components/adminlte/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image"/>
+                        <img src="{{ asset("/bower_components/adminlte/dist/img/user.png") }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs"> {{ Auth::user()->name }} </span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ asset("/bower_components/adminlte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                            <img src="{{ asset("/bower_components/adminlte/dist/img/user.png") }}" class="img-circle" alt="User Image" />
                             <p>
                                 {{ Auth::user()->name }}
+                                
                                                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -68,10 +77,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                
                             </div>
                             <div class="pull-right">
-                                <a href=" http://localhost/simpony/public/logout" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

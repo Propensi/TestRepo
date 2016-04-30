@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                   <th>ID Step</th><th>Title</th><th>Deskripsi</th>
+                   <th>Np</th><th>Title</th><th>Deskripsi</th>
                 </tr>
             </thead>
             <tbody> 
@@ -16,7 +16,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <!--<td>{{ $x }}</td>-->
-                    <td><a href="{{ url('steps', $item->ID_Step) }}">{{ $item->ID_Step }}</a></td><td>{{ $item->Title }}</td><td>{{ $item->Step }}</td>
+                    <td>{{ $x }}</td><td><a href="{{ url('steps', $item->ID_Step) }}">{{ $item->Title }}</a></td><td>{{ $item->Step }}</td>
                     <td>
                         <a href="{{ url('steps/' . $item->ID_Step . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

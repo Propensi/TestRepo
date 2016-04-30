@@ -12,6 +12,7 @@ use Session;
 use App\User;
 
 
+use Illuminate\Support\Facades\Redirect;
 class StepsController extends Controller
 {
 
@@ -52,7 +53,9 @@ class StepsController extends Controller
         $steps = Step::where('Assn_ID','=',$id)->paginate(15);
         $eser = \DB::table('users')->where('role','=','Staff')->lists('name', 'user_ID');
         $assignment = Assignment::findOrFail($id);
-        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps);
+
+        return Redirect::back();
+        //return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps);
     }
 
     /**
@@ -98,7 +101,7 @@ class StepsController extends Controller
 
         Session::flash('flash_message', 'Step updated!');
 
-        return redirect('steps');
+        return Redirect::action('AssignmentsController@assignStaff', array($request->Assn_ID));
     }
 
     /**
@@ -114,7 +117,7 @@ class StepsController extends Controller
 
         Session::flash('flash_message', 'Step deleted!');
 
-        return redirect('steps');
+        return Redirect::back();
     }
 
 }

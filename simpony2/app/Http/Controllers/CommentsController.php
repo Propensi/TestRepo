@@ -58,7 +58,7 @@ class CommentsController extends Controller
        
         $id = $request->Assn_ID;
 
-        return Redirect::route('assignments.show', $id);
+        return Redirect::back();
     }
 
     /**
@@ -71,7 +71,6 @@ class CommentsController extends Controller
     public function show($id)
     {
         $comment = Comment::findOrFail($id);
-
         return view('comments.show', compact('comment'));
     }
 
@@ -104,7 +103,7 @@ class CommentsController extends Controller
 
         Session::flash('flash_message', 'Comment updated!');
 
-        return redirect('comments');
+        return Redirect::back();
     }
 
     /**
@@ -120,7 +119,7 @@ class CommentsController extends Controller
 
         Session::flash('flash_message', 'Comment deleted!');
 
-        return redirect('comments');
+        return Redirect::back();
     }
 
 }

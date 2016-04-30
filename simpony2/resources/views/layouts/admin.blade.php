@@ -1,0 +1,2 @@
+<li><a href="{{url('departments')}}"><i class="glyphicon glyphicon-stats"></i><span>Melihat Department</span></a></li>
+<li><a href="{{url('users')}}"><i class="glyphicon glyphicon-user"></i><span>Mengelola User</span></a></li>

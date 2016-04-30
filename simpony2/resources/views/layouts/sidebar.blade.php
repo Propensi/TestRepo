@@ -7,12 +7,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset("/bower_components/adminlte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                <img src="{{ asset("/bower_components/adminlte/dist/img/user.png") }}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
                 <p>{{ Auth::user()->name }}</p>
                 <!-- Status -->
-               <a href="#"><i class="fa fa-circle text-success"></i> Dept. Promo</a>
+               <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->role }}</a>
 
             </div>
         </div>
@@ -41,15 +41,27 @@
             </ul>
             </li>
             <li><a href="{{url('assignments/pelacakan')}}"><i class="fa fa-files-o"></i><span>Melacak Assignment</span></a></li>
-            <li><a href="{{url('departments')}}"><i class="glyphicon glyphicon-stats"></i><span>Melihat Department</span></a></li>
-            <li><a href="{{url('users')}}"><i class="glyphicon glyphicon-user"></i><span>Mengelola User</span></a></li>
-            <li><a href="{{url('assignments')}}"><i class="glyphicon glyphicon-folder-open"></i><span>Melihat Assignment Masuk</span></a></li>
+          
+            
+            @if(Auth::user()->role == 'Head of Dept')
+            @include('layouts.hod')
+            @endif
 
-            <li><a href ="{{url('assignments/listAccepted')}}"><i class="glyphicon glyphicon-share-alt"></i><span>Assign Pekerjaan ke Staff</span></a></li>
-                
-            <li><a href ="{{url('assignments/rejected')}}"><i class="glyphicon glyphicon-check"></i><span>Memantau Pekerjaan HG</span></a></li>
-            <li><a href ="{{url('assignments/rejected')}}"><i class="glyphicon glyphicon-check"></i><span>Pekerjaan Department HOD</span></a></li>
-            <li><a href ="{{url('assignments/rejected')}}"><i class="fa fa-files-o"></i><span>Melihat Pekerjaan Staff</span></a></li>
+            @if(Auth::user()->role == 'Head Group')
+            @include('layouts.hg')
+            @endif
+            
+            @if(Auth::user()->role == 'Staff')
+            @include('layouts.staff')
+            @endif
+
+            @if(Auth::user()->role == 'Admin')    
+        @include('layouts.admin')
+
+            @endif
+
+
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

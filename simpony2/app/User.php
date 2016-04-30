@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'no_peg', 'email', 'password',
+        'name', 'no_peg', 'email', 'password','role','Dept_name' ,'mgr_id',''
     ];
 
     /**
@@ -36,7 +36,6 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User');
 
     }
-
 
     public function comments()
     {
